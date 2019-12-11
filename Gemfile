@@ -48,6 +48,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "letter_opener" #Preview email in the default browser
 end
 
 group :test do
@@ -63,4 +64,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Authentication Gem
 gem 'devise'
+
+# Bootstrap support
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'jquery-rails'
+
+#
 
