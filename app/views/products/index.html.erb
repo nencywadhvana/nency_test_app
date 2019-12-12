@@ -1,6 +1,13 @@
+<%= form_tag '/products/import_products', multipart: true do %>
+  <label for="file">Import Products</label> <%= file_field_tag "file" %><br>
+  <%= submit_tag 'Import Products', class: 'btn btn-primary' %>
+<% end %>
+
+<br><br>
 <div class="col-12">
   <%= link_to("Add Product", new_product_path , class: 'pull-right btn btn-primary') %> 
 </div>
+
 <table class="table table-striped">
   <thead>
     <tr>
