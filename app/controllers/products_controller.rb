@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:create_product_with_api]
   before_action :fetch_product, only: %i[ destroy edit update show ]
-  
+
   # GET
   def index
     @products = current_user.products
@@ -43,6 +43,25 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy if @product.present?
     redirect_to products_path
+  end
+
+  # create product With auth API
+  def create_product_with_api
+    user = User.find_by(authentication_token: params[:authentication_token])
+    if user.present?
+      product = user.products.new(product_params)
+      if product.save
+        json_response({success: true,data: {:product => product},message: "Product is created successfully"
+          }, 201)
+      else
+        json_response({success: false,data: {:product => product},errors: product.errors.messages,message: "Validation faild"}, 422)
+      end
+    else
+      json_response({
+          success: false,
+          message: "Token is invalid"
+          }, 400)
+    end
   end
 
   def import_products

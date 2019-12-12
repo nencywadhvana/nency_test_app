@@ -72,4 +72,6 @@ gem 'jquery-rails'
 # For background process
 gem 'sidekiq'
 
+# for toekn authentication
+gem 'simple_token_authentication'
 

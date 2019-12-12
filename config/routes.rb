@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       post :import_products
+      post :create_product_with_api
     end
   end
 end
