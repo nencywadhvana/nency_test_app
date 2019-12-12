@@ -67,7 +67,7 @@ class ProductsController < ApplicationController
   def import_products
     csv_path = params[:file]&.path
     ProductWorker.perform_async(csv_path) if csv_path.present?
-    redirect_to products_path
+    redirect_to root_path
   end
 
   private
